@@ -94,7 +94,7 @@ const Hero = ({ onOpenResume }: HeroProps) => {
             Computer Science engineer & systems builder engineering intelligent software, IoT devices, and multi-agent AI workflows from silicon to production.
           </p>
           <div className="mt-6 font-sans text-xl md:text-2xl uppercase bg-black text-white inline-block px-4 py-2 transform -rotate-2 transition-all duration-300 hover:bg-accent hover:scale-105 hover:rotate-2 hover:shadow-[6px_6px_0_0_#000]">
-            "TURNING ALGORITHMS & HARDWARE INTO REAL-WORLD IMPACT"
+            "ARCHITECTING FULL STACK SYSTEMS FROM DATABASE TO PIXEL"
           </div>
         </div>
         

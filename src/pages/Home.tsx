@@ -117,10 +117,10 @@ function Home() {
         <div className="bg-yellow-400 text-black py-4 sm:py-6 border-y-8 border-black transform -rotate-2 scale-110 relative z-10 my-16 shadow-[0_12px_0_0_#2563eb]">
           <div className="absolute inset-0 opacity-20 bg-[repeating-linear-gradient(45deg,#000,#000_20px,transparent_20px,transparent_40px)] pointer-events-none" />
           <div className="animate-marquee font-black uppercase text-5xl md:text-8xl tracking-tighter hover:text-black/20 hover:[-webkit-text-stroke:2px_black] transition-colors duration-300 relative z-20 cursor-crosshair">
-            <span className="mr-12">TURNING ALGORITHMS &amp; HARDWARE INTO REAL-WORLD IMPACT //</span>
-            <span className="mr-12">TURNING ALGORITHMS &amp; HARDWARE INTO REAL-WORLD IMPACT //</span>
-            <span className="mr-12">TURNING ALGORITHMS &amp; HARDWARE INTO REAL-WORLD IMPACT //</span>
-            <span className="mr-12">TURNING ALGORITHMS &amp; HARDWARE INTO REAL-WORLD IMPACT //</span>
+            <span className="mr-12">ARCHITECTING FROM DATABASE TO PIXEL // SCALABLE APIS &amp; SEAMLESS INTERFACES //</span>
+            <span className="mr-12">ARCHITECTING FROM DATABASE TO PIXEL // SCALABLE APIS &amp; SEAMLESS INTERFACES //</span>
+            <span className="mr-12">ARCHITECTING FROM DATABASE TO PIXEL // SCALABLE APIS &amp; SEAMLESS INTERFACES //</span>
+            <span className="mr-12">ARCHITECTING FROM DATABASE TO PIXEL // SCALABLE APIS &amp; SEAMLESS INTERFACES //</span>
           </div>
         </div>
 
