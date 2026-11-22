@@ -34,11 +34,11 @@ const Hero = ({ onOpenResume }: HeroProps) => {
     gsap.killTweensOf(shutterRef.current);
     gsap.killTweensOf('.photo-img');
     gsap.fromTo(shutterRef.current,
-      { opacity: 0.9 },
-      { opacity: 0, duration: 0.3, ease: 'power2.out' }
+      { opacity: 0.95 },
+      { opacity: 0, duration: 0.28, ease: 'power2.out' }
     );
     gsap.fromTo('.photo-img',
-      { scale: 1.08, filter: 'brightness(1.4)' },
+      { scale: 1.07, filter: 'brightness(1.35)' },
       { scale: 1, filter: 'brightness(1)', duration: 0.35, ease: 'power2.out' }
     );
   };
@@ -52,6 +52,12 @@ const Hero = ({ onOpenResume }: HeroProps) => {
         { y: 60, opacity: 0, rotation: 2 },
         { y: 0, opacity: 1, rotation: 0, duration: 0.8, stagger: 0.1, ease: 'back.out(1.5)' },
         0
+      );
+
+      // Right side abstract decorations entrance
+      tl.from('.right-deco',
+        { scale: 0, opacity: 0, y: 100, duration: 1, stagger: 0.15, ease: 'back.out(1.5)' },
+        0.2
       );
 
       // Photo entrance
@@ -75,11 +81,11 @@ const Hero = ({ onOpenResume }: HeroProps) => {
         );
       }
 
-      // Parallax effect on subtle backdrop decoration
+      // Parallax scroll effect on abstract decorations
       if (decoRef.current) {
         gsap.to(decoRef.current, {
-          y: 200,
-          rotation: 10,
+          y: 300,
+          rotation: 15,
           ease: 'none',
           scrollTrigger: {
             trigger: containerRef.current,
@@ -97,16 +103,34 @@ const Hero = ({ onOpenResume }: HeroProps) => {
   return (
     <section ref={containerRef} className="min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 pt-28 pb-16 relative overflow-hidden">
       
-      {/* Background Decorative Grid Accent (Behind content) */}
-      <div ref={decoRef} className="absolute -top-[10%] -right-[5%] w-[600px] h-[600px] hidden xl:block z-0 pointer-events-none opacity-20">
-        <div className="grid grid-cols-6 grid-rows-6 gap-3 transform -rotate-12 scale-110">
-          {[...Array(36)].map((_, i) => (
+      {/* Brutalist Abstract Decorations - Right Side (Behind photo) */}
+      <div ref={decoRef} className="absolute top-[10%] -right-[10%] w-[800px] h-[800px] hidden lg:block z-0 pointer-events-none">
+        
+        {/* Abstract 5x5 Grid - Massive */}
+        <div className="right-deco absolute inset-0 grid grid-cols-5 grid-rows-5 gap-4 transform -rotate-12 scale-125">
+          {[...Array(25)].map((_, i) => (
             <div 
               key={i} 
-              className={`border-4 border-black ${i % 3 === 0 ? 'bg-accent' : i % 5 === 0 ? 'bg-yellow-400' : 'bg-transparent'}`}
+              className={`brutal-border border-8 pointer-events-auto cursor-crosshair transition-all duration-300 ease-out hover:scale-125 hover:-translate-y-4 hover:bg-white hover:border-accent hover:shadow-[12px_12px_0_0_#2563eb] hover:z-20 relative ${i % 3 === 0 ? 'bg-accent' : i % 5 === 0 ? 'bg-black' : 'bg-transparent'} ${i % 2 === 0 ? 'animate-pulse' : ''}`} 
+              style={{ animationDuration: `${(i % 5) + 2}s` }}
             />
           ))}
         </div>
+        
+        {/* Rotating Badge - Massive (Original Placement & Size) */}
+        <div className="right-deco absolute top-[60%] -left-[10%] w-80 h-80 z-10 pointer-events-auto">
+          <div 
+            className="w-full h-full bg-white rounded-full brutal-border border-8 brutal-shadow flex items-center justify-center animate-spin cursor-crosshair transition-all duration-500 ease-out hover:bg-black hover:text-white hover:scale-125 hover:shadow-[16px_16px_0_0_#2563eb]" 
+            style={{ animationDuration: '15s' }}
+          >
+            <div className="text-center font-bold font-sans uppercase text-xl tracking-widest leading-tight transition-colors duration-500">
+              Full Stack <br /> Developer <br /> ★ <br /> AI Systems <br /> &amp; IoT
+            </div>
+          </div>
+        </div>
+
+        {/* Floating Box - Massive */}
+        <div className="right-deco absolute top-[10%] right-[20%] w-64 h-64 bg-accent brutal-border border-8 brutal-shadow transform rotate-12 pointer-events-auto cursor-crosshair transition-all duration-500 ease-out hover:bg-white hover:rotate-90 hover:scale-75 hover:shadow-[24px_24px_0_0_#000] hover:z-20" />
       </div>
 
       <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 relative z-10">
@@ -195,7 +219,7 @@ const Hero = ({ onOpenResume }: HeroProps) => {
         </div>
 
         {/* Right Column: Neo-Brutalist Portrait Dossier Card with Shutter Effect */}
-        <div className="hero-photo opacity-0 w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[400px] relative lg:mr-4 mt-6 lg:mt-0">
+        <div className="hero-photo opacity-0 w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[400px] relative z-20 lg:mr-4 mt-6 lg:mt-0">
           
           {/* Offset colored backdrop layer */}
           <div className="absolute inset-0 bg-accent translate-x-4 translate-y-4 brutal-border -z-10" />
@@ -251,15 +275,6 @@ const Hero = ({ onOpenResume }: HeroProps) => {
               <span className="bg-yellow-400 text-black font-black text-xs uppercase px-2.5 py-1 brutal-border border-2 border-black shadow-[2px_2px_0_0_#000] transform -rotate-2">
                 ACTIVE
               </span>
-            </div>
-          </div>
-
-          {/* Floating Rotating Stamp - Bigger with original Full Stack Developer text */}
-          <div className="absolute -bottom-10 -left-10 sm:-bottom-12 sm:-left-12 w-44 h-44 sm:w-52 sm:h-52 pointer-events-none z-20">
-            <div className="w-full h-full bg-yellow-400 rounded-full brutal-border border-6 border-black shadow-[6px_6px_0_0_#000] flex items-center justify-center animate-spin" style={{ animationDuration: '18s' }}>
-              <div className="text-center font-black font-sans uppercase text-xs sm:text-sm tracking-widest leading-tight text-black">
-                Full Stack <br /> Developer <br /> ★ <br /> AI Systems <br /> &amp; IoT
-              </div>
             </div>
           </div>
 
