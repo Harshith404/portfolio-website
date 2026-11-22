@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { Trophy, Award, BookOpen, Star, CheckCircle } from 'lucide-react';
+import { Trophy, BookOpen, Star } from 'lucide-react';
 
 const Education = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

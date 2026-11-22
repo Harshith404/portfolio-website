@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FolderGit2, Sparkles } from 'lucide-react';
+import { FolderGit2 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 

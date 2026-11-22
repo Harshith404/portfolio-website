@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Terminal } from 'lucide-react';
+import { X, Send, Terminal } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RESUME_MD } from '../data/resume';
 
