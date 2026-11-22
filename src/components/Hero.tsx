@@ -105,8 +105,8 @@ const Hero = ({ onOpenResume }: HeroProps) => {
         {/* Floating Box - Massive */}
         <div className="right-deco absolute top-[10%] right-[20%] w-64 h-64 bg-accent brutal-border border-8 brutal-shadow transform rotate-12 pointer-events-auto cursor-crosshair transition-all duration-500 ease-out hover:bg-white hover:rotate-90 hover:scale-75 hover:shadow-[24px_24px_0_0_#000] hover:z-20"></div>
 
-        {/* Photo Card - Layered upon the abstract decorations */}
-        <div className="right-deco absolute top-[18%] left-[16%] w-[330px] z-30 pointer-events-auto">
+        {/* Photo Card - Moved Northeast so rotating disk is 100% unobstructed */}
+        <div className="right-deco absolute top-[6%] left-[32%] xl:left-[35%] w-[320px] z-30 pointer-events-auto">
           {/* Offset colored backdrop layer */}
           <div className="absolute inset-0 bg-accent translate-x-3 translate-y-3 brutal-border -z-10" />
 
