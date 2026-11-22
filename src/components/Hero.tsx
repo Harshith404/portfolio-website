@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, ArrowRight, FileText } from 'lucide-react';
+import { Mail, ArrowRight, FileText, Check } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 
@@ -12,9 +12,20 @@ interface HeroProps {
 }
 
 const Hero = ({ onOpenResume }: HeroProps) => {
+  const [emailCopied, setEmailCopied] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const decoRef = useRef<HTMLDivElement>(null);
+
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText('harshithshetty2006@gmail.com');
+    }
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2500);
+    window.open('https://mail.google.com/mail/?view=cm&fs=1&to=harshithshetty2006@gmail.com', '_blank');
+  };
   
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -127,9 +138,15 @@ const Hero = ({ onOpenResume }: HeroProps) => {
             </span>
             <ArrowRight strokeWidth={3} size={20} className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
           </button>
-          <a href="mailto:harshithshetty2006@gmail.com" className="group bg-white text-black brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-6 py-4 flex items-center justify-between gap-4 hover:bg-accent hover:text-white hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#000] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[200px]">
+          <a 
+            href="mailto:harshithshetty2006@gmail.com" 
+            onClick={handleEmailClick}
+            className={`group brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-6 py-4 flex items-center justify-between gap-4 hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#000] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[200px] cursor-pointer ${emailCopied ? 'bg-green-400 text-black' : 'bg-white text-black hover:bg-accent hover:text-white'}`}
+            title="Click to open in Gmail & copy address"
+          >
             <span className="flex items-center gap-3">
-              <Mail strokeWidth={2.5} size={24} /> Email
+              {emailCopied ? <Check strokeWidth={3} size={24} /> : <Mail strokeWidth={2.5} size={24} />}
+              {emailCopied ? 'Copied!' : 'Email'}
             </span>
             <ArrowRight strokeWidth={3} size={20} className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
           </a>

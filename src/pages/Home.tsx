@@ -7,7 +7,7 @@ import Education from '../components/Education';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaGithub, FaLinkedin, FaPaperPlane } from 'react-icons/fa';
-import { FileText, X, Download } from 'lucide-react';
+import { FileText, X, Download, Check } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import PixelCursor from '../components/PixelCursor';
 import Chatbot from '../components/Chatbot';
@@ -73,6 +73,17 @@ function ResumeModal({ onClose }: { onClose: () => void }) {
 
 function Home() {
   const [resumeOpen, setResumeOpen] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText('harshithshetty2006@gmail.com');
+    }
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2500);
+    window.open('https://mail.google.com/mail/?view=cm&fs=1&to=harshithshetty2006@gmail.com', '_blank');
+  };
 
   useEffect(() => {
     setTimeout(() => { ScrollTrigger.refresh(); }, 100);
@@ -133,8 +144,13 @@ function Home() {
             <a href="https://linkedin.com/in/harshith-r1506" target="_blank" rel="noopener noreferrer" className="bg-white text-black font-bold text-xl uppercase px-8 py-4 brutal-shadow border-4 border-black hover:-translate-y-2 transition-transform duration-300 flex items-center gap-3">
               LINKEDIN <FaLinkedin className="text-3xl" />
             </a>
-            <a href="mailto:harshithshetty2006@gmail.com" className="bg-accent text-white font-bold text-xl uppercase px-8 py-4 brutal-shadow border-4 border-black hover:-translate-y-2 transition-transform duration-300 flex items-center gap-3">
-              EMAIL ME <FaPaperPlane className="text-3xl" />
+            <a 
+              href="mailto:harshithshetty2006@gmail.com" 
+              onClick={handleEmailClick}
+              className={`font-bold text-xl uppercase px-8 py-4 brutal-shadow border-4 border-black hover:-translate-y-2 transition-transform duration-300 flex items-center gap-3 cursor-pointer ${emailCopied ? 'bg-green-400 text-black' : 'bg-accent text-white'}`}
+              title="Click to open in Gmail & copy email address"
+            >
+              {emailCopied ? 'COPIED!' : 'EMAIL ME'} {emailCopied ? <Check size={28} strokeWidth={3} /> : <FaPaperPlane className="text-3xl" />}
             </a>
             <button
               onClick={() => setResumeOpen(true)}
