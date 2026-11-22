@@ -202,9 +202,8 @@ const Hero = ({ onOpenResume }: HeroProps) => {
 
           {/* Main Card Frame */}
           <div 
-            onClick={triggerShutter}
+            onMouseEnter={triggerShutter}
             className="bg-white text-black brutal-border border-8 brutal-shadow p-4 sm:p-5 relative transform rotate-2 hover:rotate-0 transition-all duration-500 group shadow-[14px_14px_0_0_#000] hover:shadow-[20px_20px_0_0_#2563eb] cursor-pointer"
-            title="Click to trigger camera shutter"
           >
             
             {/* Top Bar / Header of Dossier Photo */}
@@ -223,25 +222,14 @@ const Hero = ({ onOpenResume }: HeroProps) => {
               </div>
             </div>
 
-            {/* Photo Container with Viewfinder Overlay & Shutter Flash */}
+            {/* Photo Container: Clean natural photo, no overlay marks, shutter on hover */}
             <div className="relative aspect-[4/5] overflow-hidden brutal-border border-4 border-black bg-black">
-              {/* Natural Color Photo (No Grayscale) */}
+              {/* Natural Color Photo (No Grayscale, no marks) */}
               <img 
                 src="/HarshithProfessional.jpeg" 
                 alt="Harshith R"
                 className="photo-img w-full h-full object-cover object-top transition-transform duration-500 scale-100 group-hover:scale-105"
               />
-
-              {/* Viewfinder Corner Brackets */}
-              <div className="absolute top-2.5 left-2.5 w-4 h-4 border-t-2 border-l-2 border-white/80 pointer-events-none z-10" />
-              <div className="absolute top-2.5 right-2.5 w-4 h-4 border-t-2 border-r-2 border-white/80 pointer-events-none z-10" />
-              <div className="absolute bottom-2.5 left-2.5 w-4 h-4 border-b-2 border-l-2 border-white/80 pointer-events-none z-10" />
-              <div className="absolute bottom-2.5 right-2.5 w-4 h-4 border-b-2 border-r-2 border-white/80 pointer-events-none z-10" />
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 opacity-30">
-                <div className="w-6 h-6 border border-white rounded-full flex items-center justify-center">
-                  <div className="w-1.5 h-1.5 bg-white rounded-full" />
-                </div>
-              </div>
 
               {/* Camera Shutter Flash Overlay */}
               <div 
@@ -266,11 +254,11 @@ const Hero = ({ onOpenResume }: HeroProps) => {
             </div>
           </div>
 
-          {/* Floating Rotating Stamp (Subtly Overlapping) */}
-          <div className="absolute -bottom-8 -left-8 w-28 h-28 sm:w-32 sm:h-32 pointer-events-none z-20">
-            <div className="w-full h-full bg-yellow-400 rounded-full brutal-border border-4 border-black shadow-[4px_4px_0_0_#000] flex items-center justify-center animate-spin" style={{ animationDuration: '20s' }}>
-              <div className="text-center font-black font-sans uppercase text-[10px] sm:text-xs tracking-tighter leading-tight text-black">
-                ENGINEERING <br /> ★ IMPACT ★ <br /> 2026
+          {/* Floating Rotating Stamp - Bigger with original Full Stack Developer text */}
+          <div className="absolute -bottom-10 -left-10 sm:-bottom-12 sm:-left-12 w-44 h-44 sm:w-52 sm:h-52 pointer-events-none z-20">
+            <div className="w-full h-full bg-yellow-400 rounded-full brutal-border border-6 border-black shadow-[6px_6px_0_0_#000] flex items-center justify-center animate-spin" style={{ animationDuration: '18s' }}>
+              <div className="text-center font-black font-sans uppercase text-xs sm:text-sm tracking-widest leading-tight text-black">
+                Full Stack <br /> Developer <br /> ★ <br /> AI Systems <br /> &amp; IoT
               </div>
             </div>
           </div>
