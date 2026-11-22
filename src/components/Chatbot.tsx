@@ -66,7 +66,7 @@ const Chatbot = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: 'llama-3.3-70b-versatile',
+          model: 'openai/gpt-oss-120b',
           messages: [
             { role: 'system', content: SYSTEM_PROMPT },
             ...messages,
@@ -78,16 +78,17 @@ const Chatbot = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to fetch from Groq API');
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.error?.message || `API error (${response.status})`);
       }
 
       const data = await response.json();
-      const aiMessage = data.choices[0]?.message?.content || "Connection error. Systems offline.";
+      const aiMessage = data.choices[0]?.message?.content || data.choices[0]?.message?.reasoning || "Connection error. Systems offline.";
       
       setMessages(prev => [...prev, { role: 'assistant', content: aiMessage }]);
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      setMessages(prev => [...prev, { role: 'assistant', content: "[ERROR] Unable to connect to LLM provider. Check API key." }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: `[ERROR] ${error?.message || "Unable to connect to LLM provider. Check API key."}` }]);
     } finally {
       setIsLoading(false);
     }
