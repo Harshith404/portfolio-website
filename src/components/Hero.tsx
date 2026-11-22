@@ -1,13 +1,17 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, ArrowRight, Code } from 'lucide-react';
+import { Mail, ArrowRight, FileText } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Hero = () => {
+interface HeroProps {
+  onOpenResume?: () => void;
+}
+
+const Hero = ({ onOpenResume }: HeroProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const decoRef = useRef<HTMLDivElement>(null);
@@ -113,6 +117,16 @@ const Hero = () => {
             </span>
             <ArrowRight strokeWidth={3} size={20} className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
           </a>
+          <button 
+            type="button"
+            onClick={() => onOpenResume ? onOpenResume() : window.open('/resume.pdf', '_blank')}
+            className="group bg-yellow-400 text-black brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-6 py-4 flex items-center justify-between gap-4 hover:bg-black hover:text-white hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#2563eb] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[200px] cursor-pointer"
+          >
+            <span className="flex items-center gap-3">
+              <FileText size={24} /> Resume
+            </span>
+            <ArrowRight strokeWidth={3} size={20} className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+          </button>
           <a href="mailto:harshithshetty2006@gmail.com" className="group bg-white text-black brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-6 py-4 flex items-center justify-between gap-4 hover:bg-accent hover:text-white hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#000] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[200px]">
             <span className="flex items-center gap-3">
               <Mail strokeWidth={2.5} size={24} /> Email

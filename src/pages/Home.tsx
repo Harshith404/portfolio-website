@@ -105,7 +105,7 @@ function Home() {
       </nav>
 
       <main className="flex flex-col gap-32 pb-32">
-        <Hero />
+        <Hero onOpenResume={() => setResumeOpen(true)} />
         <Experience />
         <Projects />
         <Skills />
