@@ -77,7 +77,7 @@ const Hero = ({ onOpenResume }: HeroProps) => {
   }, []);
 
   return (
-    <section ref={containerRef} className="min-h-screen flex flex-col justify-center px-6 md:px-24 pt-20 relative overflow-hidden">
+    <section ref={containerRef} className="h-screen flex flex-col justify-center px-6 md:px-24 pt-16 relative overflow-hidden">
 
       {/* Brutalist Decorations - Right Side (Parallax Container) */}
       <div ref={decoRef} className="absolute top-[10%] -right-[10%] w-[800px] h-[800px] hidden lg:block z-10 pointer-events-none">
@@ -160,37 +160,37 @@ const Hero = ({ onOpenResume }: HeroProps) => {
 
       {/* Restricting width and enabling click-through on empty container areas */}
       <div className="max-w-5xl w-full lg:w-[58%] z-20 relative pointer-events-none">
-        <p className="hero-in opacity-0 font-bold uppercase tracking-widest text-accent mb-4 text-xl transition-all hover:scale-105 origin-left inline-block pointer-events-auto">
+        <p className="hero-in opacity-0 font-bold uppercase tracking-widest text-accent mb-2 text-lg transition-all hover:scale-105 origin-left inline-block pointer-events-auto">
           Full Stack Developer · AI & Software Systems · Embedded Systems & IoT
         </p>
 
-        <h1 ref={textRef} className="hero-in opacity-0 text-7xl md:text-[9rem] font-bold uppercase leading-none mb-8 text-white [-webkit-text-stroke:3px_black] drop-shadow-[8px_8px_0_#000] hover:text-white hover:[-webkit-text-stroke:3px_#2563eb] hover:drop-shadow-[16px_16px_0_#2563eb] hover:-translate-y-4 hover:-rotate-2 transition-all duration-300 cursor-default pointer-events-auto">
+        <h1 ref={textRef} className="hero-in opacity-0 text-7xl md:text-[8rem] font-bold uppercase leading-none mb-4 text-white [-webkit-text-stroke:3px_black] drop-shadow-[8px_8px_0_#000] hover:text-white hover:[-webkit-text-stroke:3px_#2563eb] hover:drop-shadow-[16px_16px_0_#2563eb] hover:-translate-y-4 hover:-rotate-2 transition-all duration-300 cursor-default pointer-events-auto">
           Harshith R
         </h1>
 
-        <div className="hero-in opacity-0 bg-white brutal-border brutal-shadow p-8 max-w-2xl mt-8 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-2 hover:shadow-[12px_12px_0_0_#000] hover:border-accent group pointer-events-auto">
-          <p className="text-xl md:text-2xl font-body font-bold leading-relaxed group-hover:text-accent transition-colors">
+        <div className="hero-in opacity-0 bg-white brutal-border brutal-shadow p-5 max-w-2xl mt-4 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-2 hover:shadow-[12px_12px_0_0_#000] hover:border-accent group pointer-events-auto">
+          <p className="text-lg md:text-xl font-body font-bold leading-relaxed group-hover:text-accent transition-colors">
             Computer Science engineer & systems builder engineering intelligent software, IoT devices, and multi-agent AI workflows from silicon to production.
           </p>
-          <div className="mt-6 font-sans text-xl md:text-2xl uppercase bg-black text-white inline-block px-4 py-2 transform -rotate-2 transition-all duration-300 hover:bg-accent hover:scale-105 hover:rotate-2 hover:shadow-[6px_6px_0_0_#000]">
+          <div className="mt-3 font-sans text-base md:text-lg uppercase bg-black text-white inline-block px-4 py-2 transform -rotate-2 transition-all duration-300 hover:bg-accent hover:scale-105 hover:rotate-2 hover:shadow-[6px_6px_0_0_#000]">
             "ARCHITECTING FULL STACK SYSTEMS FROM DATABASE TO PIXEL"
           </div>
         </div>
 
-        <div className="hero-in opacity-0 flex flex-wrap gap-4 md:gap-6 mt-12 pointer-events-auto">
-          <a href="https://github.com/Harshith404" target="_blank" rel="noreferrer" className="group bg-white text-black brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-6 py-4 flex items-center justify-between gap-4 hover:bg-accent hover:text-white hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#000] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[200px]">
+        <div className="hero-in opacity-0 flex flex-wrap gap-3 md:gap-4 mt-6 pointer-events-auto">
+          <a href="https://github.com/Harshith404" target="_blank" rel="noreferrer" className="group bg-white text-black brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-5 py-3 flex items-center justify-between gap-4 hover:bg-accent hover:text-white hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#000] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[180px]">
             <span className="flex items-center gap-3">
               <FaGithub size={24} /> GitHub
             </span>
             <ArrowRight strokeWidth={3} size={20} className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
           </a>
-          <a href="https://linkedin.com/in/harshith-r1506" target="_blank" rel="noreferrer" className="group bg-white text-black brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-6 py-4 flex items-center justify-between gap-4 hover:bg-accent hover:text-white hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#000] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[200px]">
+          <a href="https://linkedin.com/in/harshith-r1506" target="_blank" rel="noreferrer" className="group bg-white text-black brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-5 py-3 flex items-center justify-between gap-4 hover:bg-accent hover:text-white hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#000] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[180px]">
             <span className="flex items-center gap-3">
               <FaLinkedin size={24} /> LinkedIn
             </span>
             <ArrowRight strokeWidth={3} size={20} className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
           </a>
-          <a href="https://leetcode.com/u/Harshith_Rangaraju" target="_blank" rel="noreferrer" className="group bg-white text-black brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-6 py-4 flex items-center justify-between gap-4 hover:bg-yellow-400 hover:text-black hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#000] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[200px]">
+          <a href="https://leetcode.com/u/Harshith_Rangaraju" target="_blank" rel="noreferrer" className="group bg-white text-black brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-5 py-3 flex items-center justify-between gap-4 hover:bg-yellow-400 hover:text-black hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#000] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[180px]">
             <span className="flex items-center gap-3">
               <SiLeetcode size={24} /> LeetCode
             </span>
@@ -199,7 +199,7 @@ const Hero = ({ onOpenResume }: HeroProps) => {
           <button
             type="button"
             onClick={() => onOpenResume ? onOpenResume() : window.open('/resume.pdf', '_blank')}
-            className="group bg-yellow-400 text-black brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-6 py-4 flex items-center justify-between gap-4 hover:bg-black hover:text-white hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#2563eb] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[200px] cursor-pointer"
+            className="group bg-yellow-400 text-black brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-5 py-3 flex items-center justify-between gap-4 hover:bg-black hover:text-white hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#2563eb] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[180px] cursor-pointer"
           >
             <span className="flex items-center gap-3">
               <FileText size={24} /> Resume
@@ -209,7 +209,7 @@ const Hero = ({ onOpenResume }: HeroProps) => {
           <a
             href="mailto:harshithshetty2006@gmail.com"
             onClick={handleEmailClick}
-            className={`group brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-6 py-4 flex items-center justify-between gap-4 hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#000] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[200px] cursor-pointer ${emailCopied ? 'bg-green-400 text-black' : 'bg-white text-black hover:bg-accent hover:text-white'}`}
+            className={`group brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-5 py-3 flex items-center justify-between gap-4 hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#000] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[180px] cursor-pointer ${emailCopied ? 'bg-green-400 text-black' : 'bg-white text-black hover:bg-accent hover:text-white'}`}
             title="Click to open in Gmail & copy address"
           >
             <span className="flex items-center gap-3">
