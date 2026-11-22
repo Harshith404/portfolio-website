@@ -117,8 +117,8 @@ const Hero = ({ onOpenResume }: HeroProps) => {
           ))}
         </div>
         
-        {/* Rotating Badge - Massive (Original Placement & Size) */}
-        <div className="right-deco absolute top-[60%] -left-[10%] w-80 h-80 z-10 pointer-events-auto">
+        {/* Rotating Badge - Massive (Shifted left to show full text) */}
+        <div className="right-deco absolute top-[55%] -left-[28%] w-80 h-80 z-20 pointer-events-auto">
           <div 
             className="w-full h-full bg-white rounded-full brutal-border border-8 brutal-shadow flex items-center justify-center animate-spin cursor-crosshair transition-all duration-500 ease-out hover:bg-black hover:text-white hover:scale-125 hover:shadow-[16px_16px_0_0_#2563eb]" 
             style={{ animationDuration: '15s' }}
