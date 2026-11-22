@@ -16,6 +16,7 @@ const Hero = ({ onOpenResume }: HeroProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const decoRef = useRef<HTMLDivElement>(null);
+  const shutterRef = useRef<HTMLDivElement>(null);
 
   const handleEmailClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -25,6 +26,20 @@ const Hero = ({ onOpenResume }: HeroProps) => {
     setEmailCopied(true);
     setTimeout(() => setEmailCopied(false), 2500);
     window.open('https://mail.google.com/mail/?view=cm&fs=1&to=harshithshetty2006@gmail.com', '_blank');
+  };
+
+  const triggerShutter = () => {
+    if (!shutterRef.current) return;
+    gsap.killTweensOf(shutterRef.current);
+    gsap.killTweensOf('.photo-img');
+    gsap.fromTo(shutterRef.current,
+      { opacity: 0.95 },
+      { opacity: 0, duration: 0.28, ease: 'power2.out' }
+    );
+    gsap.fromTo('.photo-img',
+      { scale: 1.07, filter: 'brightness(1.35)' },
+      { scale: 1, filter: 'brightness(1)', duration: 0.35, ease: 'power2.out' }
+    );
   };
   
   useEffect(() => {
@@ -66,6 +81,7 @@ const Hero = ({ onOpenResume }: HeroProps) => {
       
       {/* Brutalist Decorations - Right Side (Parallax Container) */}
       <div ref={decoRef} className="absolute top-[10%] -right-[10%] w-[800px] h-[800px] hidden lg:block z-0 pointer-events-none">
+        
         {/* Abstract Grid - Massive */}
         <div className="right-deco absolute inset-0 grid grid-cols-5 grid-rows-5 gap-4 transform -rotate-12 scale-125">
           {[...Array(25)].map((_, i) => (
@@ -77,7 +93,7 @@ const Hero = ({ onOpenResume }: HeroProps) => {
           ))}
         </div>
         
-        {/* Rotating Badge - Massive */}
+        {/* Rotating Badge - Massive (Original Placement & Size) */}
         <div className="right-deco absolute top-[60%] -left-[10%] w-80 h-80 z-10 pointer-events-auto">
           <div className="w-full h-full bg-white rounded-full brutal-border border-8 brutal-shadow flex items-center justify-center animate-spin cursor-crosshair transition-all duration-500 ease-out hover:bg-black hover:text-white hover:scale-125 hover:shadow-[16px_16px_0_0_#2563eb]" style={{ animationDuration: '15s' }}>
             <div className="text-center font-bold font-sans uppercase text-xl tracking-widest leading-tight transition-colors duration-500">
@@ -88,6 +104,58 @@ const Hero = ({ onOpenResume }: HeroProps) => {
 
         {/* Floating Box - Massive */}
         <div className="right-deco absolute top-[10%] right-[20%] w-64 h-64 bg-accent brutal-border border-8 brutal-shadow transform rotate-12 pointer-events-auto cursor-crosshair transition-all duration-500 ease-out hover:bg-white hover:rotate-90 hover:scale-75 hover:shadow-[24px_24px_0_0_#000] hover:z-20"></div>
+
+        {/* Photo Card - Layered upon the abstract decorations */}
+        <div className="right-deco absolute top-[18%] left-[16%] w-[330px] z-30 pointer-events-auto">
+          {/* Offset colored backdrop layer */}
+          <div className="absolute inset-0 bg-accent translate-x-3 translate-y-3 brutal-border -z-10" />
+
+          {/* Main Card Frame */}
+          <div 
+            onMouseEnter={triggerShutter}
+            className="bg-white text-black brutal-border border-6 brutal-shadow p-3.5 relative transform rotate-1 hover:rotate-0 transition-all duration-500 group shadow-[14px_14px_0_0_#000] hover:shadow-[20px_20px_0_0_#2563eb] cursor-pointer"
+            title="Hover to trigger shutter"
+          >
+            {/* Top Bar */}
+            <div className="flex justify-between items-center pb-2 mb-2.5 border-b-2 border-black">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse border border-black inline-block" />
+                <span className="font-mono font-bold text-[11px] uppercase tracking-wider text-black">
+                  HARSHITH_R.RAW
+                </span>
+              </div>
+              <span className="bg-black text-white text-[9px] font-mono font-bold px-1.5 py-0.5 uppercase tracking-wider">
+                DEV_ID: RNS-2428
+              </span>
+            </div>
+
+            {/* Clean Natural Photo with Shutter Flash on Hover */}
+            <div className="relative aspect-[4/5] overflow-hidden brutal-border border-4 border-black bg-black">
+              <img 
+                src="/HarshithProfessional.jpeg" 
+                alt="Harshith R"
+                className="photo-img w-full h-full object-cover object-top transition-transform duration-500 scale-100 group-hover:scale-105"
+              />
+              {/* Shutter Flash */}
+              <div 
+                ref={shutterRef}
+                className="absolute inset-0 bg-white pointer-events-none z-20 opacity-0"
+              />
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="mt-3 flex items-center justify-between">
+              <div>
+                <p className="font-black text-base uppercase tracking-tight leading-tight">Harshith R</p>
+                <p className="font-bold text-[11px] uppercase text-accent tracking-wide">Full Stack · AI & IoT</p>
+              </div>
+              <span className="bg-yellow-400 text-black font-black text-[11px] uppercase px-2.5 py-1 brutal-border border-2 border-black shadow-[2px_2px_0_0_#000]">
+                ACTIVE
+              </span>
+            </div>
+          </div>
+        </div>
+
       </div>
       
       {/* Restricting width so it doesn't block hover events on the right */}
