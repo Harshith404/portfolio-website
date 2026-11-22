@@ -41,11 +41,11 @@ const Hero = ({ onOpenResume }: HeroProps) => {
       { scale: 1, filter: 'brightness(1)', duration: 0.35, ease: 'power2.out' }
     );
   };
-  
+
   useEffect(() => {
     let ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.2 });
-      
+
       // Unified Left side entrance (waterfall effect)
       tl.fromTo('.hero-in',
         { y: 60, opacity: 0, rotation: 2 },
@@ -78,26 +78,26 @@ const Hero = ({ onOpenResume }: HeroProps) => {
 
   return (
     <section ref={containerRef} className="min-h-screen flex flex-col justify-center px-6 md:px-24 pt-20 relative overflow-hidden">
-      
+
       {/* Brutalist Decorations - Right Side (Parallax Container) */}
       <div ref={decoRef} className="absolute top-[10%] -right-[10%] w-[800px] h-[800px] hidden lg:block z-0 pointer-events-none">
-        
+
         {/* Abstract Grid - Massive */}
         <div className="right-deco absolute inset-0 grid grid-cols-5 grid-rows-5 gap-4 transform -rotate-12 scale-125">
           {[...Array(25)].map((_, i) => (
-            <div 
-              key={i} 
-              className={`brutal-border border-8 pointer-events-auto cursor-crosshair transition-all duration-300 ease-out hover:scale-125 hover:-translate-y-4 hover:bg-white hover:border-accent hover:shadow-[12px_12px_0_0_#2563eb] hover:z-20 relative ${i % 3 === 0 ? 'bg-accent' : i % 5 === 0 ? 'bg-black' : 'bg-transparent'} ${i % 2 === 0 ? 'animate-pulse' : ''}`} 
+            <div
+              key={i}
+              className={`brutal-border border-8 pointer-events-auto cursor-crosshair transition-all duration-300 ease-out hover:scale-125 hover:-translate-y-4 hover:bg-white hover:border-accent hover:shadow-[12px_12px_0_0_#2563eb] hover:z-20 relative ${i % 3 === 0 ? 'bg-accent' : i % 5 === 0 ? 'bg-black' : 'bg-transparent'} ${i % 2 === 0 ? 'animate-pulse' : ''}`}
               style={{ animationDuration: `${(i % 5) + 2}s` }}
             ></div>
           ))}
         </div>
-        
+
         {/* Rotating Badge - Massive (Original Placement & Size) */}
         <div className="right-deco absolute top-[60%] -left-[10%] w-80 h-80 z-10 pointer-events-auto">
           <div className="w-full h-full bg-white rounded-full brutal-border border-8 brutal-shadow flex items-center justify-center animate-spin cursor-crosshair transition-all duration-500 ease-out hover:bg-black hover:text-white hover:scale-125 hover:shadow-[16px_16px_0_0_#2563eb]" style={{ animationDuration: '15s' }}>
             <div className="text-center font-bold font-sans uppercase text-xl tracking-widest leading-tight transition-colors duration-500">
-              Full Stack <br/> Developer <br/> ★ <br/> AI Systems <br/> & IoT
+              Full Stack <br /> Developer <br /> ★ <br /> AI Systems <br /> & IoT
             </div>
           </div>
         </div>
@@ -106,12 +106,12 @@ const Hero = ({ onOpenResume }: HeroProps) => {
         <div className="right-deco absolute top-[10%] right-[20%] w-64 h-64 bg-accent brutal-border border-8 brutal-shadow transform rotate-12 pointer-events-auto cursor-crosshair transition-all duration-500 ease-out hover:bg-white hover:rotate-90 hover:scale-75 hover:shadow-[24px_24px_0_0_#000] hover:z-20"></div>
 
         {/* Photo Card - Moved Northeast so rotating disk is 100% unobstructed */}
-        <div className="right-deco absolute top-[6%] left-[32%] xl:left-[35%] w-[320px] z-30 pointer-events-auto">
+        <div className="right-deco absolute top-[6%] left-[32%] xl:left-[32%] w-[320px] z-30 pointer-events-auto">
           {/* Offset colored backdrop layer */}
           <div className="absolute inset-0 bg-accent translate-x-3 translate-y-3 brutal-border -z-10" />
 
           {/* Main Card Frame */}
-          <div 
+          <div
             onMouseEnter={triggerShutter}
             className="bg-white text-black brutal-border border-6 brutal-shadow p-3.5 relative transform rotate-1 hover:rotate-0 transition-all duration-500 group shadow-[14px_14px_0_0_#000] hover:shadow-[20px_20px_0_0_#2563eb] cursor-pointer"
             title="Hover to trigger shutter"
@@ -131,13 +131,13 @@ const Hero = ({ onOpenResume }: HeroProps) => {
 
             {/* Clean Natural Photo with Shutter Flash on Hover */}
             <div className="relative aspect-[4/5] overflow-hidden brutal-border border-4 border-black bg-black">
-              <img 
-                src="/HarshithProfessional.jpeg" 
+              <img
+                src="/HarshithProfessional.jpeg"
                 alt="Harshith R"
                 className="photo-img w-full h-full object-cover object-top transition-transform duration-500 scale-100 group-hover:scale-105"
               />
               {/* Shutter Flash */}
-              <div 
+              <div
                 ref={shutterRef}
                 className="absolute inset-0 bg-white pointer-events-none z-20 opacity-0"
               />
@@ -157,17 +157,17 @@ const Hero = ({ onOpenResume }: HeroProps) => {
         </div>
 
       </div>
-      
+
       {/* Restricting width so it doesn't block hover events on the right */}
       <div className="max-w-5xl w-full lg:w-[60%] z-10 relative">
         <p className="hero-in opacity-0 font-bold uppercase tracking-widest text-accent mb-4 text-xl transition-all hover:scale-105 origin-left inline-block">
           Full Stack Developer · AI & Software Systems · Embedded Systems & IoT
         </p>
-        
+
         <h1 ref={textRef} className="hero-in opacity-0 text-7xl md:text-[9rem] font-bold uppercase leading-none mb-8 text-white [-webkit-text-stroke:3px_black] drop-shadow-[8px_8px_0_#000] hover:text-white hover:[-webkit-text-stroke:3px_#2563eb] hover:drop-shadow-[16px_16px_0_#2563eb] hover:-translate-y-4 hover:-rotate-2 transition-all duration-300 cursor-default">
           Harshith R
         </h1>
-        
+
         <div className="hero-in opacity-0 bg-white brutal-border brutal-shadow p-8 max-w-2xl mt-8 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-2 hover:shadow-[12px_12px_0_0_#000] hover:border-accent group">
           <p className="text-xl md:text-2xl font-body font-bold leading-relaxed group-hover:text-accent transition-colors">
             Computer Science engineer & systems builder engineering intelligent software, IoT devices, and multi-agent AI workflows from silicon to production.
@@ -176,7 +176,7 @@ const Hero = ({ onOpenResume }: HeroProps) => {
             "ARCHITECTING FULL STACK SYSTEMS FROM DATABASE TO PIXEL"
           </div>
         </div>
-        
+
         <div className="hero-in opacity-0 flex flex-wrap gap-4 md:gap-6 mt-12">
           <a href="https://github.com/Harshith404" target="_blank" rel="noreferrer" className="group bg-white text-black brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-6 py-4 flex items-center justify-between gap-4 hover:bg-accent hover:text-white hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#000] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[200px]">
             <span className="flex items-center gap-3">
@@ -196,7 +196,7 @@ const Hero = ({ onOpenResume }: HeroProps) => {
             </span>
             <ArrowRight strokeWidth={3} size={20} className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
           </a>
-          <button 
+          <button
             type="button"
             onClick={() => onOpenResume ? onOpenResume() : window.open('/resume.pdf', '_blank')}
             className="group bg-yellow-400 text-black brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-6 py-4 flex items-center justify-between gap-4 hover:bg-black hover:text-white hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#2563eb] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[200px] cursor-pointer"
@@ -206,8 +206,8 @@ const Hero = ({ onOpenResume }: HeroProps) => {
             </span>
             <ArrowRight strokeWidth={3} size={20} className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
           </button>
-          <a 
-            href="mailto:harshithshetty2006@gmail.com" 
+          <a
+            href="mailto:harshithshetty2006@gmail.com"
             onClick={handleEmailClick}
             className={`group brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-6 py-4 flex items-center justify-between gap-4 hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#000] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[200px] cursor-pointer ${emailCopied ? 'bg-green-400 text-black' : 'bg-white text-black hover:bg-accent hover:text-white'}`}
             title="Click to open in Gmail & copy address"
