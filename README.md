@@ -13,7 +13,7 @@ A high-performance, neo-brutalist developer portfolio for **Harshith R** — Ful
 
 ---
 
-## ⚡ Key Features
+## Key Features
 
 - **Neo-Brutalist Aesthetic:** High-contrast color blocks, heavy borders, brutalist offset drop-shadows, and tactile physical hover states.
 - **Custom Canvas Pixel Cursor:** Interactive pixelated mouse pointer with a dynamic ghosting trail and color-inversion blending.
@@ -41,7 +41,7 @@ A high-performance, neo-brutalist developer portfolio for **Harshith R** — Ful
 
 ---
 
-## 🚀 Featured Projects
+## Featured Projects
 
 1. **RNS Navis — Autonomous EV**
    * *React · FastAPI · Folium · ML · Sensor Fusion*
@@ -69,7 +69,7 @@ A high-performance, neo-brutalist developer portfolio for **Harshith R** — Ful
 
 ---
 
-## 💻 Local Development Setup
+## Local Development Setup
 
 ### 1. Prerequisites
 - [Node.js](https://nodejs.org/) (v18 or higher recommended)
@@ -107,7 +107,7 @@ npm run preview
 
 ---
 
-## 📬 Contact & Connect
+## Contact & Connect
 
 - **Name:** Harshith R
 - **Location:** Bengaluru, Karnataka, India
@@ -116,8 +116,3 @@ npm run preview
 - **LeetCode:** [Harshith_Rangaraju](https://leetcode.com/u/Harshith_Rangaraju)
 - **Email:** [harshithshetty2006@gmail.com](mailto:harshithshetty2006@gmail.com)
 
----
-
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
