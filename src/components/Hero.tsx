@@ -65,8 +65,8 @@ const Hero = () => {
         {/* Rotating Badge - Massive */}
         <div className="right-deco absolute top-[60%] -left-[10%] w-80 h-80 z-10 pointer-events-auto">
           <div className="w-full h-full bg-white rounded-full brutal-border border-8 brutal-shadow flex items-center justify-center animate-spin cursor-crosshair transition-all duration-500 ease-out hover:bg-black hover:text-white hover:scale-125 hover:shadow-[16px_16px_0_0_#2563eb]" style={{ animationDuration: '15s' }}>
-            <div className="text-center font-bold font-sans uppercase text-2xl tracking-widest leading-tight transition-colors duration-500">
-              AI Systems <br/> & IoT <br/> ★ <br/> Available <br/> For Impact
+            <div className="text-center font-bold font-sans uppercase text-xl tracking-widest leading-tight transition-colors duration-500">
+              Full Stack <br/> Developer <br/> ★ <br/> AI Systems <br/> & IoT
             </div>
           </div>
         </div>
