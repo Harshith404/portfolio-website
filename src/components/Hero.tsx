@@ -160,24 +160,24 @@ const Hero = ({ onOpenResume }: HeroProps) => {
 
       {/* Restricting width and enabling click-through on empty container areas */}
       <div className="max-w-5xl w-full lg:w-[58%] z-20 relative pointer-events-none">
-        <p className="hero-in opacity-0 font-bold uppercase tracking-widest text-accent mb-2 text-lg transition-all hover:scale-105 origin-left inline-block pointer-events-auto">
+        <p className="hero-in opacity-0 font-bold uppercase tracking-widest text-accent mb-4 text-lg transition-all hover:scale-105 origin-left inline-block pointer-events-auto">
           Full Stack Developer · AI & Software Systems · Embedded Systems & IoT
         </p>
 
-        <h1 ref={textRef} className="hero-in opacity-0 text-7xl md:text-[8rem] font-bold uppercase leading-none mb-4 text-white [-webkit-text-stroke:3px_black] drop-shadow-[8px_8px_0_#000] hover:text-white hover:[-webkit-text-stroke:3px_#2563eb] hover:drop-shadow-[16px_16px_0_#2563eb] hover:-translate-y-4 hover:-rotate-2 transition-all duration-300 cursor-default pointer-events-auto">
+        <h1 ref={textRef} className="hero-in opacity-0 text-7xl md:text-[8rem] font-bold uppercase leading-none mb-6 text-white [-webkit-text-stroke:3px_black] drop-shadow-[8px_8px_0_#000] hover:text-white hover:[-webkit-text-stroke:3px_#2563eb] hover:drop-shadow-[16px_16px_0_#2563eb] hover:-translate-y-4 hover:-rotate-2 transition-all duration-300 cursor-default pointer-events-auto">
           Harshith R
         </h1>
 
-        <div className="hero-in opacity-0 bg-white brutal-border brutal-shadow p-5 max-w-2xl mt-4 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-2 hover:shadow-[12px_12px_0_0_#000] hover:border-accent group pointer-events-auto">
+        <div className="hero-in opacity-0 bg-white brutal-border brutal-shadow p-6 max-w-2xl mt-6 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-2 hover:shadow-[12px_12px_0_0_#000] hover:border-accent group pointer-events-auto">
           <p className="text-lg md:text-xl font-body font-bold leading-relaxed group-hover:text-accent transition-colors">
             Computer Science engineer & systems builder engineering intelligent software, IoT devices, and multi-agent AI workflows from silicon to production.
           </p>
-          <div className="mt-3 font-sans text-base md:text-lg uppercase bg-black text-white inline-block px-4 py-2 transform -rotate-2 transition-all duration-300 hover:bg-accent hover:scale-105 hover:rotate-2 hover:shadow-[6px_6px_0_0_#000]">
+          <div className="mt-4 font-sans text-base md:text-lg uppercase bg-black text-white inline-block px-4 py-2 transform -rotate-2 transition-all duration-300 hover:bg-accent hover:scale-105 hover:rotate-2 hover:shadow-[6px_6px_0_0_#000]">
             "ARCHITECTING FULL STACK SYSTEMS FROM DATABASE TO PIXEL"
           </div>
         </div>
 
-        <div className="hero-in opacity-0 flex flex-wrap gap-3 md:gap-4 mt-6 pointer-events-auto">
+        <div className="hero-in opacity-0 flex flex-wrap gap-3 md:gap-4 mt-8 pointer-events-auto">
           <a href="https://github.com/Harshith404" target="_blank" rel="noreferrer" className="group bg-white text-black brutal-border brutal-shadow font-sans font-bold uppercase tracking-widest px-5 py-3 flex items-center justify-between gap-4 hover:bg-accent hover:text-white hover:-translate-y-2 hover:shadow-[8px_8px_0_0_#000] transition-all duration-300 flex-1 sm:flex-none sm:min-w-[180px]">
             <span className="flex items-center gap-3">
               <FaGithub size={24} /> GitHub
