@@ -100,22 +100,22 @@ function Home() {
     <div className="min-h-screen relative overflow-hidden">
       <PixelCursor />
 
-      <nav className="fixed top-0 w-full p-6 flex justify-between items-center z-40 mix-blend-difference text-white">
-        <div className="font-sans font-bold text-2xl tracking-tighter uppercase">Harshith R</div>
-        <div className="flex gap-6 font-bold uppercase text-sm items-center">
-          <a href="#experience" className="hover:text-accent transition-colors">Experience</a>
-          <a href="#projects" className="hover:text-accent transition-colors">Projects</a>
-          <a href="#skills" className="hover:text-accent transition-colors">Skills</a>
+      <nav className="fixed top-0 w-full p-4 sm:p-6 flex justify-between items-center z-40 mix-blend-difference text-white">
+        <div className="font-sans font-bold text-lg sm:text-2xl tracking-tighter uppercase">Harshith R</div>
+        <div className="flex gap-3 sm:gap-6 font-bold uppercase text-xs sm:text-sm items-center">
+          <a href="#experience" className="hover:text-accent transition-colors hidden sm:block">Experience</a>
+          <a href="#projects" className="hover:text-accent transition-colors hidden sm:block">Projects</a>
+          <a href="#skills" className="hover:text-accent transition-colors hidden sm:block">Skills</a>
           <button
             onClick={() => setResumeOpen(true)}
-            className="hover:text-yellow-400 transition-colors bg-white text-black px-3 py-1 font-black flex items-center gap-2 mix-blend-normal"
+            className="hover:text-yellow-400 transition-colors bg-white text-black px-2 sm:px-3 py-1 font-black flex items-center gap-1.5 mix-blend-normal text-xs sm:text-sm"
           >
-            <FileText size={15} /> RESUME
+            <FileText size={13} /> RESUME
           </button>
         </div>
       </nav>
 
-      <main className="flex flex-col gap-32 pb-32">
+      <main className="flex flex-col gap-16 sm:gap-24 md:gap-32 pb-16 sm:pb-32">
         <Hero onOpenResume={() => setResumeOpen(true)} />
         <Experience />
         <Projects />
