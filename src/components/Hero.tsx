@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, ArrowRight, FileText, Check } from 'lucide-react';
+import { Mail, ArrowRight, FileText, Check, Camera } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 
@@ -16,6 +16,7 @@ const Hero = ({ onOpenResume }: HeroProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const decoRef = useRef<HTMLDivElement>(null);
+  const shutterRef = useRef<HTMLDivElement>(null);
 
   const handleEmailClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -25,6 +26,21 @@ const Hero = ({ onOpenResume }: HeroProps) => {
     setEmailCopied(true);
     setTimeout(() => setEmailCopied(false), 2500);
     window.open('https://mail.google.com/mail/?view=cm&fs=1&to=harshithshetty2006@gmail.com', '_blank');
+  };
+
+  const triggerShutter = () => {
+    if (!shutterRef.current) return;
+    // Interactive camera shutter flash & snap
+    gsap.killTweensOf(shutterRef.current);
+    gsap.killTweensOf('.photo-img');
+    gsap.fromTo(shutterRef.current,
+      { opacity: 0.9 },
+      { opacity: 0, duration: 0.3, ease: 'power2.out' }
+    );
+    gsap.fromTo('.photo-img',
+      { scale: 1.08, filter: 'brightness(1.4)' },
+      { scale: 1, filter: 'brightness(1)', duration: 0.35, ease: 'power2.out' }
+    );
   };
 
   useEffect(() => {
@@ -40,20 +56,24 @@ const Hero = ({ onOpenResume }: HeroProps) => {
 
       // Photo entrance
       tl.fromTo('.hero-photo',
-        { scale: 0.88, opacity: 0, y: 70 },
-        { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' },
+        { scale: 0.85, opacity: 0, y: 80, rotation: -6 },
+        { scale: 1, opacity: 1, y: 0, rotation: 2, duration: 0.8, ease: 'back.out(1.4)' },
         0.3
       );
 
-      // "Shakey at first" mechanical camera shutter / terminal stabilization jitter
-      tl.to('.hero-photo-inner', { x: -8, y: 6, rotation: -3, duration: 0.05 })
-        .to('.hero-photo-inner', { x: 9, y: -7, rotation: 3.5, duration: 0.05 })
-        .to('.hero-photo-inner', { x: -7, y: 5, rotation: -2.5, duration: 0.05 })
-        .to('.hero-photo-inner', { x: 6, y: -4, rotation: 2, duration: 0.05 })
-        .to('.hero-photo-inner', { x: -4, y: 3, rotation: -1.2, duration: 0.04 })
-        .to('.hero-photo-inner', { x: 3, y: -2, rotation: 0.8, duration: 0.04 })
-        .to('.hero-photo-inner', { x: -1, y: 1, rotation: -0.3, duration: 0.03 })
-        .to('.hero-photo-inner', { x: 0, y: 0, rotation: 0, duration: 0.08, ease: 'power2.out' });
+      // Camera shutter snap & flash on initial arrival
+      if (shutterRef.current) {
+        tl.fromTo(shutterRef.current,
+          { opacity: 0.95 },
+          { opacity: 0, duration: 0.35, ease: 'power2.out' },
+          0.85
+        );
+        tl.fromTo('.photo-img',
+          { scale: 1.12, filter: 'brightness(1.6)' },
+          { scale: 1, filter: 'brightness(1)', duration: 0.45, ease: 'power2.out' },
+          0.85
+        );
+      }
 
       // Parallax effect on subtle backdrop decoration
       if (decoRef.current) {
@@ -174,52 +194,85 @@ const Hero = ({ onOpenResume }: HeroProps) => {
           </div>
         </div>
 
-        {/* Right Column: Clean, Vivid Neo-Brutalist Photo Card with Shake Entrance */}
-        <div className="hero-photo opacity-0 w-full max-w-[340px] sm:max-w-[370px] lg:max-w-[390px] relative mt-8 lg:mt-0">
+        {/* Right Column: Neo-Brutalist Portrait Dossier Card with Shutter Effect */}
+        <div className="hero-photo opacity-0 w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[400px] relative lg:mr-4 mt-6 lg:mt-0">
           
-          {/* Offset colored shadow frame */}
-          <div className="absolute inset-0 bg-accent translate-x-3 translate-y-3 brutal-border -z-10" />
+          {/* Offset colored backdrop layer */}
+          <div className="absolute inset-0 bg-accent translate-x-4 translate-y-4 brutal-border -z-10" />
 
-          {/* Main Card Frame with Kinetic Shake */}
-          <div className="hero-photo-inner bg-white text-black brutal-border border-6 brutal-shadow p-3.5 sm:p-4 relative transition-transform duration-300 hover:-translate-y-2 hover:shadow-[16px_16px_0_0_#2563eb] group">
+          {/* Main Card Frame */}
+          <div 
+            onClick={triggerShutter}
+            className="bg-white text-black brutal-border border-8 brutal-shadow p-4 sm:p-5 relative transform rotate-2 hover:rotate-0 transition-all duration-500 group shadow-[14px_14px_0_0_#000] hover:shadow-[20px_20px_0_0_#2563eb] cursor-pointer"
+            title="Click to trigger camera shutter"
+          >
             
-            {/* Top Bar: Status + Badge */}
-            <div className="flex justify-between items-center pb-2.5 mb-2.5 border-b-4 border-black">
+            {/* Top Bar / Header of Dossier Photo */}
+            <div className="flex justify-between items-center pb-3 mb-3 border-b-4 border-black">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse border-2 border-black inline-block" />
-                <span className="font-mono font-bold text-xs uppercase tracking-wider text-black">
-                  ONLINE // DEV
+                <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse border-2 border-black inline-block" />
+                <span className="font-mono font-bold text-xs uppercase tracking-widest text-black">
+                  HARSHITH_R.RAW
                 </span>
               </div>
-              <span className="bg-black text-white text-[10px] font-mono font-bold px-2 py-0.5 uppercase tracking-wider">
-                B.E. CSE @ RNSIT
-              </span>
+              <div className="flex items-center gap-1.5 text-gray-700">
+                <Camera size={13} />
+                <span className="bg-black text-white text-[10px] font-mono font-bold px-2 py-0.5 uppercase tracking-wider">
+                  DEV_ID: RNS-2428
+                </span>
+              </div>
             </div>
 
-            {/* Photo Container: Natural Crisp Colors (No Grayscale) */}
-            <div className="relative aspect-[4/5] overflow-hidden brutal-border border-4 border-black bg-gray-100">
+            {/* Photo Container with Viewfinder Overlay & Shutter Flash */}
+            <div className="relative aspect-[4/5] overflow-hidden brutal-border border-4 border-black bg-black">
+              {/* Natural Color Photo (No Grayscale) */}
               <img 
                 src="/HarshithProfessional.jpeg" 
                 alt="Harshith R"
-                className="w-full h-full object-cover object-top transition-transform duration-500 scale-100 group-hover:scale-105"
+                className="photo-img w-full h-full object-cover object-top transition-transform duration-500 scale-100 group-hover:scale-105"
+              />
+
+              {/* Viewfinder Corner Brackets */}
+              <div className="absolute top-2.5 left-2.5 w-4 h-4 border-t-2 border-l-2 border-white/80 pointer-events-none z-10" />
+              <div className="absolute top-2.5 right-2.5 w-4 h-4 border-t-2 border-r-2 border-white/80 pointer-events-none z-10" />
+              <div className="absolute bottom-2.5 left-2.5 w-4 h-4 border-b-2 border-l-2 border-white/80 pointer-events-none z-10" />
+              <div className="absolute bottom-2.5 right-2.5 w-4 h-4 border-b-2 border-r-2 border-white/80 pointer-events-none z-10" />
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 opacity-30">
+                <div className="w-6 h-6 border border-white rounded-full flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 bg-white rounded-full" />
+                </div>
+              </div>
+
+              {/* Camera Shutter Flash Overlay */}
+              <div 
+                ref={shutterRef}
+                className="absolute inset-0 bg-white pointer-events-none z-20 opacity-0"
               />
             </div>
 
-            {/* Bottom Caption Bar */}
-            <div className="mt-3 flex items-center justify-between">
+            {/* Bottom Caption / Badge */}
+            <div className="mt-3.5 flex items-center justify-between">
               <div>
-                <p className="font-black text-base uppercase tracking-tight leading-tight">
+                <p className="font-black text-lg uppercase tracking-tight leading-tight">
                   Harshith R
                 </p>
-                <p className="font-bold text-[11px] uppercase text-accent tracking-wide">
-                  Full Stack · AI Systems
+                <p className="font-bold text-xs uppercase text-accent tracking-wide">
+                  Full Stack · AI & IoT
                 </p>
               </div>
-              <span className="bg-yellow-400 text-black font-black text-[11px] uppercase px-2 py-0.5 brutal-border border-2 border-black shadow-[2px_2px_0_0_#000]">
-                CGPA 9.75
+              <span className="bg-yellow-400 text-black font-black text-xs uppercase px-2.5 py-1 brutal-border border-2 border-black shadow-[2px_2px_0_0_#000] transform -rotate-2">
+                ACTIVE
               </span>
             </div>
+          </div>
 
+          {/* Floating Rotating Stamp (Subtly Overlapping) */}
+          <div className="absolute -bottom-8 -left-8 w-28 h-28 sm:w-32 sm:h-32 pointer-events-none z-20">
+            <div className="w-full h-full bg-yellow-400 rounded-full brutal-border border-4 border-black shadow-[4px_4px_0_0_#000] flex items-center justify-center animate-spin" style={{ animationDuration: '20s' }}>
+              <div className="text-center font-black font-sans uppercase text-[10px] sm:text-xs tracking-tighter leading-tight text-black">
+                ENGINEERING <br /> ★ IMPACT ★ <br /> 2026
+              </div>
+            </div>
           </div>
 
         </div>
