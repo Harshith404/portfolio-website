@@ -26,7 +26,7 @@ A high-performance, neo-brutalist developer portfolio for **Harshith R** — Ful
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Core Frontend
 - **Framework:** [React 19](https://react.dev/) (Vite)
